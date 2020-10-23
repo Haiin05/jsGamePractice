@@ -45,17 +45,26 @@ formTag.addEventListener('submit', function(event) { // 중요! addEventListener
             }
             inputTag.value = "";
             inputTag.focus();
-            resultDiv.innerHTML = strike + ' strike, ' + ball + ' ball.(' + (5 - wrong) + ' chances left)';
+            var left = 5 - wrong;
+            var chance = "chances";
+            if (wrong === 4) {
+                chance = "chance";
+                resultDiv.innerText = `${strike} strike, ${ball} ball. (${left} ${chance} left)`;
+            }
+            resultDiv.innerText = `${strike} strike, ${ball} ball. (${left} ${chance} left)`;
         } else {
             inputTag.value = "";
             inputTag.focus();
+            resultDiv.innerHTML = 'It was (' + randomList + ')😛 Try again!';
+            wrong = 0;
             numberList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
             randomList = [];
             for (var i = 0; i < 4; i += 1) {
                 var randomNumber = numberList.splice(Math.floor(Math.random() * (9 - i)), 1);
                 randomList.push(randomNumber[0]);
             }
-            resultDiv.innerHTML = 'It was (' + randomList + ')😛 Try again!';
+
+            
         }           
     }   
 });

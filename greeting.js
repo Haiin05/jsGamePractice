@@ -16,7 +16,6 @@ function checkName () {
         form.addEventListener("submit", submitHandler);
     }
 };
-
 function submitHandler(event) {
     event.preventDefault();
     const ANSWER = input.value;
